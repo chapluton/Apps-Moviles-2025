@@ -7,8 +7,12 @@ namespace Proyecto2.ViewModels;
 public class PropinaViewModel : INotifyPropertyChanged
 {
     public Action<double>? OnActualizarBotones { get; set; }
+    public Action? OnResetearBotones { get; set; }
+    public Action? OnResaltarPersonas { get; set; }
+    public Action? OnMarcarBotonMas { get; set; }
+    public Action? OnMarcarBotonMenos { get; set; }
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     void OnPropertyChanged([CallerMemberName] string name = "") =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
@@ -39,6 +43,7 @@ public class PropinaViewModel : INotifyPropertyChanged
                 personas = value;
                 Calcular();
                 OnPropertyChanged();
+                OnResaltarPersonas?.Invoke();
             }
         }
     }
@@ -55,6 +60,9 @@ public class PropinaViewModel : INotifyPropertyChanged
                 porcentaje = entero;
                 Calcular();
                 OnPropertyChanged();
+
+                if (porcentaje != 10 && porcentaje != 15 && porcentaje != 20)
+                    OnResetearBotones?.Invoke();
             }
         }
     }
@@ -79,11 +87,27 @@ public class PropinaViewModel : INotifyPropertyChanged
         OnPropertyChanged(nameof(TotalPorPersona));
     }
 
-    public ICommand SeleccionarPropinaCommand => new Command<double>(SeleccionarPropina);
-    public ICommand IncrementarPersonasCommand => new Command(() => Personas++);
+    public ICommand SeleccionarPropinaCommand => new Command<object>(param =>
+    {
+        if (param is string s && double.TryParse(s, out double porcentaje))
+            SeleccionarPropina(porcentaje);
+        else if (param is double d)
+            SeleccionarPropina(d);
+    });
+
+    public ICommand IncrementarPersonasCommand => new Command(() =>
+    {
+        Personas++;
+        OnMarcarBotonMas?.Invoke();
+    });
+
     public ICommand DecrementarPersonasCommand => new Command(() =>
     {
-        if (Personas > 1) Personas--;
+        if (Personas > 1)
+        {
+            Personas--;
+            OnMarcarBotonMenos?.Invoke();
+        }
     });
 
     private void SeleccionarPropina(double porcentaje)
@@ -91,6 +115,4 @@ public class PropinaViewModel : INotifyPropertyChanged
         PorcentajePropina = porcentaje;
         OnActualizarBotones?.Invoke(porcentaje);
     }
-
-
 }

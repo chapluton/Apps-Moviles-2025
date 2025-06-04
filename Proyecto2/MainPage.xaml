@@ -110,7 +110,7 @@
 
                     <Slider 
                         Value="{Binding PorcentajePropina}"
-                        Minimum="0"  
+                        Minimum="0"
                         Maximum="50"
                         HorizontalOptions="FillAndExpand" />
 
@@ -134,6 +134,7 @@
 
                     <HorizontalStackLayout Spacing="20" Padding="10" HorizontalOptions="Center">
                         <Button 
+                            x:Name="btnMenos"
                             Text="–" 
                             Command="{Binding DecrementarPersonasCommand}"
                             BackgroundColor="#FF8BC8D3" 
@@ -141,16 +142,24 @@
                             FontSize="24"
                             WidthRequest="50" />
 
-                        <Label 
-                            Text="{Binding Personas}" 
-                            FontSize="24" 
-                            FontAttributes="Bold" 
-                            TextColor="White"
-                            HorizontalOptions="Center"
-                            WidthRequest="40"
-                            HorizontalTextAlignment="Center" />
+                        <Frame BackgroundColor="#FF474343"
+                               CornerRadius="10"
+                               Padding="5"
+                               HasShadow="False"
+                               HorizontalOptions="Center">
+                            <Label 
+                                x:Name="labelPersonas"
+                                Text="{Binding Personas}" 
+                                FontSize="24" 
+                                FontAttributes="Bold" 
+                                TextColor="White"
+                                HorizontalOptions="Center"
+                                WidthRequest="40"
+                                HorizontalTextAlignment="Center" />
+                        </Frame>
 
                         <Button 
+                            x:Name="btnMas"
                             Text="+" 
                             Command="{Binding IncrementarPersonasCommand}"
                             BackgroundColor="#FF8BC8D3" 
