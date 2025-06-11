@@ -1,0 +1,201 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIAPP2_1.Views.MainPage"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="10">
+
+            <!-- recuadro de resultados -->
+            <Frame BackgroundColor="#FF766F6F"
+                   CornerRadius="20"
+                   HasShadow="True"
+                   Padding="20"
+                   Margin="10">
+                <VerticalStackLayout Padding="20" Spacing="10">
+
+                    <Label Text="TOTAL P/PERSONA"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="#FF8BC8D3"/>
+
+                    <Label Text="{Binding TotalPorPersona, StringFormat='${0:N0}'}"
+                           FontSize="32"
+                           HorizontalOptions="Center"
+                           TextColor="White" />
+
+                    <HorizontalStackLayout>
+                        <Label Text="SUBTOTAL"
+                               FontSize="14"
+                               TextColor="LightGray" />
+                        <Label Text="{Binding Subtotal, StringFormat='${0:N0}'}"
+                               FontSize="14"
+                               TextColor="White" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Label Text="PROPINA"
+                               FontSize="14"
+                               TextColor="LightGray" />
+                        <Label Text="{Binding Propina, StringFormat='${0:N0}'}"
+                               FontSize="14"
+                               TextColor="White" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- ingreso del monto -->
+            <HorizontalStackLayout Spacing="10" Padding="5">
+                <Label Text="Valor Boleta $"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Start"
+                       TextColor="Black"/>
+                <Entry Text="{Binding MontoTexto}"
+                       Placeholder="Ingresa un monto"
+                       Keyboard="Numeric"
+                       MaxLength="10"
+                       FontSize="18"
+                       TextColor="White"
+                       BackgroundColor="#FF474343"
+                       WidthRequest="205"
+                       HorizontalOptions="End" />
+            </HorizontalStackLayout>
+
+            <!-- botones de propina -->
+            <HorizontalStackLayout Spacing="10" Padding="5">
+                <Label Text="Elige Propina"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Start"
+                    TextColor="Black"/>
+                
+                <!-- Botón 10% -->
+                <Button Text="10%"
+                        Command="{Binding SeleccionarPropinaCommand}"
+                        CommandParameter="10"
+                        FontSize="18" TextColor="White">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button"
+                                    Binding="{Binding PorcentajeSeleccionado}"
+                                    Value="10">
+                            <Setter Property="BackgroundColor" Value="DarkBlue"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <!-- Botón 15% -->
+                <Button Text="15%"
+                        Command="{Binding SeleccionarPropinaCommand}"
+                        CommandParameter="15"
+                        FontSize="18" TextColor="White">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button"
+                                    Binding="{Binding PorcentajeSeleccionado}"
+                                    Value="15">
+                            <Setter Property="BackgroundColor" Value="DarkBlue"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <!-- Botón 20% -->
+                <Button Text="20%"
+                        Command="{Binding SeleccionarPropinaCommand}"
+                        CommandParameter="20"
+                        FontSize="18" TextColor="White">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button"
+                                    Binding="{Binding PorcentajeSeleccionado}"
+                                    Value="20">
+                            <Setter Property="BackgroundColor" Value="DarkBlue"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+            </HorizontalStackLayout>
+
+
+            <!-- slider de propina -->
+            <Frame BackgroundColor="#FF766F6F"
+                   CornerRadius="20"
+                   HasShadow="True"
+                   Padding="20"
+                   Margin="10">
+                <VerticalStackLayout Spacing="20">
+
+                    <Label 
+                        Text="Propina elegida" 
+                        FontSize="20" 
+                        FontAttributes="Bold" 
+                        TextColor="White"
+                        HorizontalOptions="Center" />
+
+                    <Label 
+                        Text="{Binding PorcentajePropina, StringFormat='Propina elegida: {0:0}%'}"
+                        FontSize="24" 
+                        TextColor="White"
+                        HorizontalOptions="Center" />
+
+                    <Slider 
+                        Value="{Binding PorcentajePropina}"
+                        Minimum="0"
+                        Maximum="50"
+                        HorizontalOptions="FillAndExpand" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- sección para dividir el total -->
+            <Frame BackgroundColor="#FF766F6F"
+                   CornerRadius="20"
+                   HasShadow="True"
+                   Padding="20"
+                   Margin="10">
+                <VerticalStackLayout Spacing="20">
+
+                    <Label 
+                        Text="Dividir el total" 
+                        FontSize="20" 
+                        FontAttributes="Bold" 
+                        TextColor="White"
+                        HorizontalOptions="Center" />
+
+                    <HorizontalStackLayout Spacing="20" Padding="10" HorizontalOptions="Center">
+                        <Button 
+                            Text="–" 
+                            Command="{Binding DecrementarPersonasCommand}"
+                            BackgroundColor="#FF8BC8D3" 
+                            TextColor="White"
+                            FontSize="24"
+                            WidthRequest="50" />
+
+                        <Frame BackgroundColor="#FF474343"
+                               CornerRadius="10"
+                               Padding="5"
+                               HasShadow="False"
+                               HorizontalOptions="Center">
+                            <Label 
+                                Text="{Binding Personas}" 
+                                FontSize="24" 
+                                FontAttributes="Bold" 
+                                TextColor="White"
+                                HorizontalOptions="Center"
+                                WidthRequest="40"
+                                HorizontalTextAlignment="Center" />
+                        </Frame>
+
+                        <Button 
+                            Text="+" 
+                            Command="{Binding IncrementarPersonasCommand}"
+                            BackgroundColor="#FF8BC8D3" 
+                            TextColor="White"
+                            FontSize="24"
+                            WidthRequest="50" />
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
