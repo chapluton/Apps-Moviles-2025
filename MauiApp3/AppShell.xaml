@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:MauiApp3.Views"
+       x:Class="MauiApp3.AppShell">
+
+    <ShellContent Title="Inicio" ContentTemplate="{DataTemplate views:MainPage}"/>
+</Shell>

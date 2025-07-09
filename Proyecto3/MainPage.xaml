@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Proyecto3.Converters"
+             x:Class="Proyecto3.MainPage">
+
+    <!-- Fondo degradado azul a plateado -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#1E3A8A" Offset="0.0" />  <!-- Azul profundo -->
+            <GradientStop Color="#E0E0E0" Offset="1.0" />  <!-- Plateado -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:TipoColorConverter x:Key="TipoColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+
+            <!-- Título y saludo -->
+            <Label Text="GASTOS"
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   TextColor="#1E88E5"
+                   FontAttributes="Bold" />
+
+            <Label Text="Hola,"
+                   FontSize="20"
+                   TextColor="White" />
+
+            <Label Text="Grupo Aplicaciones Moviles"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   TextColor="White" />
+
+            <!-- Resumen de balance -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="25"
+                   Padding="25"
+                   Margin="0,10"
+                   HasShadow="True">
+
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="20">
+                    <VerticalStackLayout HorizontalOptions="Center">
+                        <Label Text="Balance" FontAttributes="Bold" FontSize="14" TextColor="Gray" />
+                        <Label Text="{Binding Balance, StringFormat='${0:N2}'}"
+                               FontAttributes="Bold" FontSize="20" TextColor="Black" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center">
+                        <Label Text="Ingresos" FontAttributes="Bold" FontSize="14" TextColor="Gray" />
+                        <Label Text="{Binding TotalIngresos, StringFormat='${0:N2}'}"
+                               FontAttributes="Bold" FontSize="20" TextColor="Black" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center">
+                        <Label Text="Egresos" FontAttributes="Bold" FontSize="14" TextColor="Gray" />
+                        <Label Text="{Binding TotalGastos, StringFormat='${0:N2}'}"
+                               FontAttributes="Bold" FontSize="20" TextColor="Black" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- Lista de transacciones -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="25"
+                   Padding="10"
+                   Margin="0,10"
+                   HasShadow="True">
+
+                <CollectionView ItemsSource="{Binding ListaTransacciones}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Padding="10,10">
+                                <Label Text="{Binding Descripcion}"
+                                       FontAttributes="Bold"
+                                       FontSize="16"
+                                       TextColor="Black" />
+
+                                <Label Text="{Binding Fecha, StringFormat='{0:dd-MM-yyyy}'}"
+                                       FontSize="12"
+                                       TextColor="Gray" />
+
+                                <Label FontSize="16"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="End"
+                                       Text="{Binding Monto, StringFormat='${0:N2}'}">
+                                    <Label.TextColor>
+                                        <Binding Path="Tipo" Converter="{StaticResource TipoColorConverter}" />
+                                    </Label.TextColor>
+                                </Label>
+                                <BoxView HeightRequest="1" BackgroundColor="LightGray" Margin="0,10,0,0"/>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
+
+            <!-- Botón flotante + -->
+            <Button Text="＋"
+                    CornerRadius="25"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    FontSize="24"
+                    BackgroundColor="#1E88E5"
+                    TextColor="White"
+                    HorizontalOptions="End"
+                    VerticalOptions="End"
+                    Margin="0,20"
+                    Clicked="OnAgregarTransaccionClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

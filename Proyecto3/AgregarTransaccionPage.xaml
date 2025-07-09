@@ -1,0 +1,88 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proyecto3.Views.AgregarTransaccionPage"
+             Title="Nueva transacción">
+
+    <!-- Fondo degradado azul a plateado -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#1E3A8A" Offset="0.0" />  <!-- Azul profundo -->
+            <GradientStop Color="#E0E0E0" Offset="1.0" />  <!-- Plateado -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25">
+
+            <Label Text="Nueva transacción"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
+
+            <Frame BackgroundColor="White"
+                   CornerRadius="25"
+                   Padding="25"
+                   HasShadow="True">
+
+                <VerticalStackLayout Spacing="20">
+
+                    <!-- Campo: Glosa -->
+                    <Entry x:Name="entryDescripcion"
+                           Placeholder="Glosa"
+                           PlaceholderColor="Gray"
+                           TextColor="Black"
+                           FontSize="16"
+                           BackgroundColor="#F5F5F5"
+                           HeightRequest="45"
+                           Margin="0,0,0,10"
+                           />
+
+                    <!-- Campo: Monto -->
+                    <Entry x:Name="entryMonto"
+                           Placeholder="Monto"
+                           Keyboard="Numeric"
+                           TextColor="Black"
+                           FontSize="16"
+                           BackgroundColor="#F5F5F5"
+                           HeightRequest="45"
+                           Margin="0,0,0,10"
+                           />
+
+                    <!-- Campo: Fecha -->
+                    <DatePicker x:Name="datePickerFecha"
+                                TextColor="Black"
+                                FontSize="16"
+                                BackgroundColor="#F5F5F5"
+                                HeightRequest="45"
+                                Margin="0,0,0,10"
+                                />
+
+                    <!-- Checkbox -->
+                    <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                        <CheckBox x:Name="checkIngreso" />
+                        <Label Text="¿Es ingreso?" TextColor="Black" VerticalTextAlignment="Center"/>
+                    </HorizontalStackLayout>
+
+                    <!-- Botones -->
+                    <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                        <Button Text="Guardar"
+                                BackgroundColor="#1E88E5"
+                                CornerRadius="10"
+                                WidthRequest="100"
+                                TextColor="White"
+                                Clicked="OnGuardarClicked"/>
+
+                        <Button Text="Cancelar"
+                                BackgroundColor="DarkRed"
+                                CornerRadius="10"
+                                WidthRequest="100"
+                                TextColor="White"
+                                Clicked="OnCancelarClicked"/>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

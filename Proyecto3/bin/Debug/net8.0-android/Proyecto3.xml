@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Proyecto3</name>
+    </assembly>
+    <members>
+        <member name="T:Proyecto3.ViewModels.TransaccionesViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:Proyecto3.ViewModels.TransaccionesViewModel.TotalIngresos">
+            <inheritdoc cref="F:Proyecto3.ViewModels.TransaccionesViewModel.totalIngresos"/>
+        </member>
+        <member name="P:Proyecto3.ViewModels.TransaccionesViewModel.TotalGastos">
+            <inheritdoc cref="F:Proyecto3.ViewModels.TransaccionesViewModel.totalGastos"/>
+        </member>
+        <member name="P:Proyecto3.ViewModels.TransaccionesViewModel.Balance">
+            <inheritdoc cref="F:Proyecto3.ViewModels.TransaccionesViewModel.balance"/>
+        </member>
+        <member name="F:Proyecto3.ViewModels.TransaccionesViewModel.agregarTransaccionCommand">
+            <summary>The backing field for <see cref="P:Proyecto3.ViewModels.TransaccionesViewModel.AgregarTransaccionCommand"/>.</summary>
+        </member>
+        <member name="P:Proyecto3.ViewModels.TransaccionesViewModel.AgregarTransaccionCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:Proyecto3.ViewModels.TransaccionesViewModel.AgregarTransaccion(Proyecto3.Models.TransaccionInput)"/>.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalIngresos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalIngresos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalGastos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalGastos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Balance">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Balance" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalIngresos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalIngresos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalGastos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalGastos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Balance">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Balance" generated properties.</summary>
+        </member>
+    </members>
+</doc>
