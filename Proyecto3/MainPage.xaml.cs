@@ -22,10 +22,10 @@ public partial class MainPage : ContentPage
         if (!primeraCargaHecha)
         {
             primeraCargaHecha = true;
-            return; // 🛑 No recargar la primera vez
+            return; // No recargar la primera vez
         }
 
-        // ✅ Recarga solo si vuelves desde otra página
+        // Recarga solo si vuelves desde otra página
         await ViewModel.CargarTransacciones();
     }
 
