@@ -25,7 +25,7 @@ public partial class MainPage : ContentPage
             return; // No recargar la primera vez
         }
 
-        // Recarga solo si vuelves desde otra página
+        // Recarga solo si vuelve desde otra página
         await ViewModel.CargarTransacciones();
     }
 

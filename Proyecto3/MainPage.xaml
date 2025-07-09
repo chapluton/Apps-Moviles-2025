@@ -7,7 +7,7 @@
     <!-- Fondo degradado azul a plateado -->
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="#1E3A8A" Offset="0.0" />  <!-- Azul profundo -->
+            <GradientStop Color="#1E3A8A" Offset="0.0" />  <!-- Azul -->
             <GradientStop Color="#E0E0E0" Offset="1.0" />  <!-- Plateado -->
         </LinearGradientBrush>
     </ContentPage.Background>
